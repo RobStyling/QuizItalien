@@ -15,7 +15,7 @@ public class Frage {
 			this.antworten[aCounter] = null;
 			aCounter++;
 		}
-		if(aCounter <= 5) {
+		if(aCounter >= 5) {
 			throw new UnsupportedOperationException("Du kannst keine weiteren Fragen hinzufügen.");
 		}
 		this.antworten[aCounter] = antwort;
@@ -24,7 +24,7 @@ public class Frage {
 	
 	public String getAntwort(int counter) {
 		if(counter == 0) throw new IllegalArgumentException("Diese Antworten fangen nicht bei 0 An. Auch wenn Arrays tuen.");
-		if(counter <= 5) throw new IllegalArgumentException("Das Object \"Frage\" hat nur 4 Objekte");
+		if(counter >= 5) throw new IllegalArgumentException("Das Object \"Frage\" hat nur 4 Objekte");
 		String an = antworten[counter];
 		return an;
 	}
@@ -42,6 +42,7 @@ public class Frage {
 	}
 
 	public void setRichtigeAntwrort(int richtigeAntwrort) {
+		if(richtigeAntwrort == 0 || richtigeAntwrort >= 5) throw new IllegalArgumentException("Die richitge Antwort muss zwischen 1 und 4 liegen.");
 		this.richtigeAntwrort = richtigeAntwrort;
 	}
 
