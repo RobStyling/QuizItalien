@@ -2,10 +2,11 @@ package moelrobi.quiz;
 
 public class FragenHandler {
 	private static void addFrage(Frage frage) {
-		QuizHelper.fragenListe.add(frage);
+		QuizHelper.fragenListe.add(frage); //Unnecessary Method. Maybe gets Replaced.
 	}
 	
 	public static void debugQuestions() {
+		//Example for a Question:
 		Frage f1 = new Frage();
 		f1.setFrage("Just some Debugging Stuff");
 		f1.addAntwort("Right");
