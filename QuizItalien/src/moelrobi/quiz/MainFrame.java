@@ -2,13 +2,20 @@ package moelrobi.quiz;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.awt.event.ActionEvent;
 
 public class MainFrame extends JFrame {
@@ -43,14 +50,31 @@ public class MainFrame extends JFrame {
 	}
 	
 	public static void LoadQuestion() {
+		//Loading the Questions and Answers.
 		String fr = QuizHelper.getFragen();
 		String[] an = QuizHelper.getAntworten();
+		
+		//Loading a Image of a External HTTP Source:
+		Image downloadingIcon = null;
+		ImageIcon finishedIcon;
+		
+		try {
+			downloadingIcon = ImageIO.read(new URL(QuizHelper.getURL()));
+		} catch(IOException ex) { //If it fails, log why it did.
+			Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		
+		//Rescale the Image to a more optimal size. 
+		//TODO: Make Scaling look good.
+		downloadingIcon.getScaledInstance(WIDTH, HEIGHT, java.awt.Image.SCALE_SMOOTH);
+		finishedIcon = new ImageIcon(downloadingIcon);
 		
 		lblNewLabel.setText(fr);
 		btnNewButton.setText(an[0]);
 		btnNewButton_1.setText(an[1]);
 		btnNewButton_2.setText(an[2]);
 		btnNewButton_3.setText(an[3]);
+		lblPlaceholderText.setIcon(finishedIcon);
 	}
 
 	/**

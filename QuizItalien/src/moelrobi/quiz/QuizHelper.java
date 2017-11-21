@@ -80,6 +80,10 @@ public class QuizHelper {
         }
     }
     
+    public static String getURL() {
+    	return fragenListe.get(loadCounter).getImgURL();
+    }
+    
     public static boolean CheckAnswer(String inputAnswer) { //Check if Answer is the correct answer.
 		String rightAnswer = fragenListe.get(loadCounter).getAntwort(fragenListe.get(loadCounter).getRichtigeAntwrort());
 		if(rightAnswer.equals(inputAnswer)) {
