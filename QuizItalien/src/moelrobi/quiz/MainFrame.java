@@ -17,6 +17,9 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class MainFrame extends JFrame {
 
@@ -31,6 +34,9 @@ public class MainFrame extends JFrame {
 	private static JButton btnNewButton_1;
 	private static JButton btnNewButton_2;
 	private static JButton btnNewButton_3;
+	private JPanel panel_3;
+	private JLabel lblRichtig;
+	private JLabel lblFalsch;
 
 	/**
 	 * Launch the application.
@@ -60,14 +66,15 @@ public class MainFrame extends JFrame {
 		
 		try {
 			downloadingIcon = ImageIO.read(new URL(QuizHelper.getURL()));
-		} catch(IOException ex) { //If it fails, log why it did.
+		} catch(IOException ex) { //If it fails, log why it did. (Actually it shouldn't.)
 			Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		
 		//Rescale the Image to a more optimal size. 
 		//TODO: Make Scaling look good.
-		downloadingIcon.getScaledInstance(WIDTH, HEIGHT, java.awt.Image.SCALE_SMOOTH);
-		finishedIcon = new ImageIcon(downloadingIcon);
+		
+		Image scaledIcon = downloadingIcon.getScaledInstance(540, 350, java.awt.Image.SCALE_SMOOTH);
+		finishedIcon = new ImageIcon(scaledIcon);
 		
 		lblNewLabel.setText(fr);
 		btnNewButton.setText(an[0]);
@@ -82,7 +89,7 @@ public class MainFrame extends JFrame {
 	 */
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 471, 352);
+		setBounds(100, 100, 550, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -127,6 +134,17 @@ public class MainFrame extends JFrame {
 		});
 		panel.add(btnNewButton);
 		
+		panel_3 = new JPanel();
+		panel.add(panel_3);
+		
+		lblRichtig = new JLabel("Richtig: 0");
+		panel_3.add(lblRichtig);
+		
+		lblFalsch = new JLabel("Falsch:0");
+		panel_3.add(lblFalsch);
+		lblFalsch.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblFalsch.setVerticalAlignment(SwingConstants.BOTTOM);
+		
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.NORTH);
 		
@@ -134,9 +152,11 @@ public class MainFrame extends JFrame {
 		panel_1.add(lblNewLabel);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		contentPane.add(panel_2, BorderLayout.CENTER);
 		
-		lblPlaceholderText = new JLabel("placeholder Text");
+		lblPlaceholderText = new JLabel("");
+		lblPlaceholderText.setVerticalAlignment(SwingConstants.TOP);
 		panel_2.add(lblPlaceholderText);
 	}
 
