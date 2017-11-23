@@ -27,7 +27,7 @@ public class MainFrame extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 8824982341997885339L;
-	private JPanel contentPane;
+	public static JPanel contentPane;
 	private static JLabel lblNewLabel;
 	private static JLabel lblPlaceholderText;
 	private static JButton btnNewButton;
@@ -35,8 +35,10 @@ public class MainFrame extends JFrame {
 	private static JButton btnNewButton_2;
 	private static JButton btnNewButton_3;
 	private JPanel panel_3;
-	private JLabel lblRichtig;
-	private JLabel lblFalsch;
+	private static JLabel lblRichtig;
+	private static JLabel lblFalsch;
+	private JPanel panel_4;
+	private static JLabel lblFrageVon;
 
 	/**
 	 * Launch the application.
@@ -59,6 +61,7 @@ public class MainFrame extends JFrame {
 		//Loading the Questions and Answers.
 		String fr = QuizHelper.getFragen();
 		String[] an = QuizHelper.getAntworten();
+		String author = QuizHelper.getAuthor();
 		
 		//Loading a Image of a External HTTP Source:
 		Image downloadingIcon = null;
@@ -73,7 +76,7 @@ public class MainFrame extends JFrame {
 		//Rescale the Image to a more optimal size. 
 		//TODO: Make Scaling look good.
 		
-		Image scaledIcon = downloadingIcon.getScaledInstance(540, 350, java.awt.Image.SCALE_SMOOTH);
+		Image scaledIcon = downloadingIcon.getScaledInstance(505, 262, java.awt.Image.SCALE_SMOOTH);
 		finishedIcon = new ImageIcon(scaledIcon);
 		
 		lblNewLabel.setText(fr);
@@ -82,6 +85,9 @@ public class MainFrame extends JFrame {
 		btnNewButton_2.setText(an[2]);
 		btnNewButton_3.setText(an[3]);
 		lblPlaceholderText.setIcon(finishedIcon);
+		lblRichtig.setText("Richtig: " + QuizHelper.right);
+		lblFalsch.setText("Falsch: " + QuizHelper.wrong);
+		lblFrageVon.setText("Frage von: " + author);
 	}
 
 	/**
@@ -102,6 +108,7 @@ public class MainFrame extends JFrame {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				QuizHelper.CheckAnswer(btnNewButton_3.getText());
+				QuizHelper.iCounter();
 				LoadQuestion();
 			}
 		});
@@ -111,6 +118,7 @@ public class MainFrame extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				QuizHelper.CheckAnswer(btnNewButton_2.getText());
+				QuizHelper.iCounter();
 				LoadQuestion();
 			}
 		});
@@ -120,6 +128,7 @@ public class MainFrame extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				QuizHelper.CheckAnswer(btnNewButton_1.getText());
+				QuizHelper.iCounter();
 				LoadQuestion();
 			}
 		});
@@ -129,6 +138,7 @@ public class MainFrame extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				QuizHelper.CheckAnswer(btnNewButton.getText());
+				QuizHelper.iCounter();
 				LoadQuestion();
 			}
 		});
@@ -151,13 +161,18 @@ public class MainFrame extends JFrame {
 		lblNewLabel = new JLabel("New label");
 		panel_1.add(lblNewLabel);
 		
+		panel_4 = new JPanel();
+		panel_1.add(panel_4);
+		
+		lblFrageVon = new JLabel("Frage von:");
+		panel_4.add(lblFrageVon);
+		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		contentPane.add(panel_2, BorderLayout.CENTER);
 		
 		lblPlaceholderText = new JLabel("");
 		lblPlaceholderText.setVerticalAlignment(SwingConstants.TOP);
 		panel_2.add(lblPlaceholderText);
 	}
-
 }

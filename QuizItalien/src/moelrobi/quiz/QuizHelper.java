@@ -16,16 +16,18 @@ public class QuizHelper {
 	
 	private static int loadCounter = 0;
 	
-	private static DatenbankHandler dbcon;
+	public static DatenbankHandler dbcon;
 	
-	private static int points;
 	public static int right;
 	public static int wrong;
 	
 	public static final String ip = "127.0.0.1";
 	
+	private static MainFrame frame;
+	
 	public static void main(String[] args) {
-		FragenHandler.debugQuestions(); //Load up the FragenHandler (for Loading the Questions).
+		FragenHandler.prodFragen(); //Load up the FragenHandler (for Loading the Questions).
+		System.out.println(fragenListe.toString());
 		MainFrame.main(null); //Load the Frame.
 		dbcon = new DatenbankHandler("jdbc:mysql://" + ip +":3306/flbk_rob?autoReconnect=true", "root", ""); //Creating a new Database Object.
 	}
@@ -33,8 +35,9 @@ public class QuizHelper {
 	public static String getFragen() { //Loading a Question
 		//Falsify if Check. Used currently for Reseting the Game to a previous 0 State.
 		//TODO: Add 'PostGame' Content
-        if(loadCounter >= fragenListe.size()) {
-        	ResetGame();
+        if(loadCounter == fragenListe.size()) {
+        	MainFrame.contentPane.setVisible(false);
+        	FinishedFrame.main(null);
         }
 		return fragenListe.get(loadCounter).getFrage();
 	}
@@ -90,23 +93,30 @@ public class QuizHelper {
     public static boolean CheckAnswer(String inputAnswer) { //Check if Answer is the correct answer.
 		String rightAnswer = fragenListe.get(loadCounter).getAntwort(fragenListe.get(loadCounter).getRichtigeAntwrort());
 		if(rightAnswer.equals(inputAnswer)) {
+			right++;
 			return true;
 		}
-		else return false;
+		else {
+			wrong++;
+			return false;
+		}
     }
 	
-	public void iCounter() { //Increases the loading variable.
+	public static void iCounter() { //Increases the loading variable.
 		loadCounter++;
 	}
 	
 	public static void ResetGame() { //Reseting all Points and Counters.
 		loadCounter = 0;
-		points = 0;
 		right = 0;
 		wrong = 0;
 	}
 
     public static int RNG(int Max, int Min) { //Random-Number-Generator
     	return (int) Math.floor(Math.random() * (Max - Min + 1)) + Min;
-    } 
+    }
+
+	public static String getAuthor() {
+		return fragenListe.get(loadCounter).getAuthor();
+	} 
 }
