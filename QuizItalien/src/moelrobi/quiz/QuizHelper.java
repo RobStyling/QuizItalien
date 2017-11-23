@@ -1,5 +1,8 @@
 package moelrobi.quiz;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class QuizHelper {
@@ -19,11 +22,14 @@ public class QuizHelper {
 	private static int points;
 	public static int right;
 	public static int wrong;
-
+	
+	private static final String url = "jdbc:mysql://<Serverhost IP>:3306/flbk_rob";
+	private static final String user = "flbk_rob";
+	private static final String pass = "<Userpasswort>";
+	
 	public static void main(String[] args) {
 		MainFrame.main(null); //Load the Frame.
 		FragenHandler.debugQuestions(); //Load up the FragenHandler (for Loading the Questions).
-		System.out.println(fragenListe.toString()); // DEBUG: Printout the question objects from the ArrayList.
 	}
 	
 	public static String getFragen() { //Loading a Question
@@ -41,15 +47,14 @@ public class QuizHelper {
 		String a2;
 		String a3;
 		String a4;
-		while(true) {
+		while(true) { //Endless loop for regenerating the Questions
 			//Load some questions.
 	        a1 = fragenListe.get(loadCounter).getAntwort(RNG(4,1));
 	        a2 = fragenListe.get(loadCounter).getAntwort(RNG(4,1));
 	        a3 = fragenListe.get(loadCounter).getAntwort(RNG(4,1));
 	        a4 = fragenListe.get(loadCounter).getAntwort(RNG(4,1));
 	        
-	        if(CheckA(a1, a2, a3, a4) == true) {
-	        	//If everything is non-duplicate break the loop.
+	        if(CheckA(a1, a2, a3, a4) == true) { //If everything is non-duplicate break the loop.
 	        	break;
 	        }
 		}
@@ -80,7 +85,7 @@ public class QuizHelper {
         }
     }
     
-    public static String getURL() {
+    public static String getURL() { //Load the URL for an UI. Maybe going faster if UI access it directly
     	return fragenListe.get(loadCounter).getImgURL();
     }
     
@@ -104,6 +109,13 @@ public class QuizHelper {
 	}
 
     public static int RNG(int Max, int Min) { //Random-Number-Generator
-        return (int) Math.floor(Math.random() * (Max - Min + 1)) + Min;
+    	return (int) Math.floor(Math.random() * (Max - Min + 1)) + Min;
+    } 
+    public static void InsertScore() {
+    	try(Connection conn = DriverManager.getConnection(url, user, pass)) {
+    		System.out.println("Database connected!");
+    	} catch(SQLException e) {
+    		throw new IllegalStateException("Cannot connect to the DB", e);
+    	}
     }
 }
