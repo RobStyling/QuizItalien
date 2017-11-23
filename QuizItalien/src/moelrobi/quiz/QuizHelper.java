@@ -1,8 +1,5 @@
 package moelrobi.quiz;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class QuizHelper {
@@ -19,17 +16,18 @@ public class QuizHelper {
 	
 	private static int loadCounter = 0;
 	
+	private static DatenbankHandler dbcon;
+	
 	private static int points;
 	public static int right;
 	public static int wrong;
 	
-	private static final String url = "jdbc:mysql://<Serverhost IP>:3306/flbk_rob";
-	private static final String user = "flbk_rob";
-	private static final String pass = "<Userpasswort>";
+	public static final String ip = "127.0.0.1";
 	
 	public static void main(String[] args) {
-		MainFrame.main(null); //Load the Frame.
 		FragenHandler.debugQuestions(); //Load up the FragenHandler (for Loading the Questions).
+		MainFrame.main(null); //Load the Frame.
+		dbcon = new DatenbankHandler("jdbc:mysql://" + ip +":3306/flbk_rob?autoReconnect=true", "root", ""); //Creating a new Database Object.
 	}
 	
 	public static String getFragen() { //Loading a Question
@@ -111,11 +109,4 @@ public class QuizHelper {
     public static int RNG(int Max, int Min) { //Random-Number-Generator
     	return (int) Math.floor(Math.random() * (Max - Min + 1)) + Min;
     } 
-    public static void InsertScore() {
-    	try(Connection conn = DriverManager.getConnection(url, user, pass)) {
-    		System.out.println("Database connected!");
-    	} catch(SQLException e) {
-    		throw new IllegalStateException("Cannot connect to the DB", e);
-    	}
-    }
 }
