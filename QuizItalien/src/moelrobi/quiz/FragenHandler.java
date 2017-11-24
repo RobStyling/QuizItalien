@@ -1,10 +1,6 @@
 package moelrobi.quiz;
 
 public class FragenHandler {
-	private static void addFrage(Frage frage) { //Unnecessary Method. Maybe gets Replaced.
-		QuizHelper.fragenListe.add(frage); 
-	}
-	
 	public static void debugQuestions() {
 		//Example for a Question:
 		Frage f1 = new Frage();
@@ -17,7 +13,7 @@ public class FragenHandler {
 		f1.setRichtigeAntwrort(1);
 		f1.setAuthor("Rob (The Developer of that great App)");
 		
-		addFrage(f1);
+		QuizHelper.fragenListe.add(f1);
 	}
 	 public static void prodFragen() {	        
 	        Frage it_hauptstadt = new Frage();
@@ -140,17 +136,17 @@ public class FragenHandler {
 	        it_wmdabei.setImgURL("http://"+ QuizHelper.ip +"/img/it_ball.jpg");
 	        it_wmdabei.setAuthor("Rob");
 	        
-	        addFrage(it_hauptstadt);
-	        addFrage(it_vulkan);
-	        addFrage(it_grosstadt);
-	        addFrage(it_spagetti);
-	        addFrage(it_flaeche);
-	        addFrage(it_gruendung);
-	        addFrage(it_vorwahl);
-	        addFrage(it_sprache);
-	        addFrage(it_wm);
-	        addFrage(it_ausbruch);
-	        addFrage(it_mafia);
-	        addFrage(it_wmdabei);
+	        QuizHelper.fragenListe.add(it_hauptstadt);
+	        QuizHelper.fragenListe.add(it_vulkan);
+	        QuizHelper.fragenListe.add(it_grosstadt);
+	        QuizHelper.fragenListe.add(it_spagetti);
+	        QuizHelper.fragenListe.add(it_flaeche);
+	        QuizHelper.fragenListe.add(it_gruendung);
+	        QuizHelper.fragenListe.add(it_vorwahl);
+	        QuizHelper.fragenListe.add(it_sprache);
+	        QuizHelper.fragenListe.add(it_wm);
+	        QuizHelper.fragenListe.add(it_ausbruch);
+	        QuizHelper.fragenListe.add(it_mafia);
+	        QuizHelper.fragenListe.add(it_wmdabei);
 	}
 }

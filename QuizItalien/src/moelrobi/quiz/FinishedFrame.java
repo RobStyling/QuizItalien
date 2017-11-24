@@ -92,14 +92,6 @@ public static void Load() {
 		});
 		panel.add(btnRestart);
 		
-		btnScoreboard = new JButton("Scoreboard");
-		btnScoreboard.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ScoreboardFrame.main(null);
-			}
-		});
-		panel.add(btnScoreboard);
-		
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
 		
