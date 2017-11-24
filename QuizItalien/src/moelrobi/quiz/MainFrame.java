@@ -39,6 +39,7 @@ public class MainFrame extends JFrame {
 	private static JLabel lblFalsch;
 	private JPanel panel_4;
 	private static JLabel lblFrageVon;
+	public static MainFrame frame;
 
 	/**
 	 * Launch the application.
@@ -47,7 +48,7 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame();
+					frame = new MainFrame();
 					frame.setVisible(true);
 					LoadQuestion();
 				} catch (Exception e) {

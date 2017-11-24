@@ -30,7 +30,7 @@ public class FinishedFrame extends JFrame {
 	private JButton btnRestart;
 	private JButton btnScoreboard;
 	private static JLabel label;
-	private static FinishedFrame frame;
+	public static FinishedFrame frame;
 
 	/**
 	 * Launch the application.
@@ -51,10 +51,9 @@ public class FinishedFrame extends JFrame {
 
 public static void Load() {
 	String s = (String) JOptionPane.showInputDialog(null, "Bitte gebe deinen Namen ein:", "Name bitte", JOptionPane.PLAIN_MESSAGE, null, null, null);
-	if(s.equals(null)) {
-		return;
+	if(!s.equals(null)) {
+		QuizHelper.dbcon.InsertScore(s, QuizHelper.right);
 	}
-	QuizHelper.dbcon.InsertScore(s, QuizHelper.right);
 	BufferedImage downloadingIcon = null;
 	try {
 		downloadingIcon = ImageIO.read(new URL("http://" + QuizHelper.ip + "/img/it_check.png"));
@@ -65,7 +64,7 @@ public static void Load() {
 	//Rescale the Image to a more optimal size. 
 	//TODO: Make Scaling look good.
 	
-	Image scaledIcon = downloadingIcon.getScaledInstance(505, 262, java.awt.Image.SCALE_SMOOTH);
+	Image scaledIcon = downloadingIcon.getScaledInstance(400, 200, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon finishedIcon = new ImageIcon(scaledIcon);
 	label.setIcon(finishedIcon);
 }
@@ -87,13 +86,18 @@ public static void Load() {
 		btnRestart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				QuizHelper.ResetGame();
-				contentPane.setVisible(false);
+				frame.setVisible(false);
 				MainFrame.main(null);
 			}
 		});
 		panel.add(btnRestart);
 		
 		btnScoreboard = new JButton("Scoreboard");
+		btnScoreboard.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ScoreboardFrame.main(null);
+			}
+		});
 		panel.add(btnScoreboard);
 		
 		JPanel panel_1 = new JPanel();

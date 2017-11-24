@@ -19,8 +19,7 @@ public class FragenHandler {
 		
 		addFrage(f1);
 	}
-	 public static void prodFragen() 
-	    {	        
+	 public static void prodFragen() {	        
 	        Frage it_hauptstadt = new Frage();
 	        it_hauptstadt.setFrage("Was ist die Hauptstadt Italiens?");
 	        it_hauptstadt.addAntwort("Rom");
@@ -68,7 +67,7 @@ public class FragenHandler {
 	        it_flaeche.addAntwort("400.000km²");
 	        it_flaeche.addAntwort("250.000km²");
 	        it_flaeche.setRichtigeAntwrort(1);
-	        it_flaeche.setImgURL("http://"+ QuizHelper.ip +"/img/it_karte.png");
+	        it_flaeche.setImgURL("http://"+ QuizHelper.ip +"/img/it_karte.jpg");
 	        it_flaeche.setAuthor("Lukas Oe");
 	        
 	        Frage it_gruendung = new Frage();

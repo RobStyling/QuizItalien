@@ -29,14 +29,14 @@ public class QuizHelper {
 		FragenHandler.prodFragen(); //Load up the FragenHandler (for Loading the Questions).
 		System.out.println(fragenListe.toString());
 		MainFrame.main(null); //Load the Frame.
-		dbcon = new DatenbankHandler("jdbc:mysql://" + ip +":3306/flbk_rob?autoReconnect=true", "root", ""); //Creating a new Database Object.
+		dbcon = new DatenbankHandler("jdbc:mysql://" + ip +":3306/flbk_rob?autoReconnect=true", "root", ""); //Creating a new Database Object.#
 	}
 	
 	public static String getFragen() { //Loading a Question
 		//Falsify if Check. Used currently for Reseting the Game to a previous 0 State.
 		//TODO: Add 'PostGame' Content
         if(loadCounter == fragenListe.size()) {
-        	MainFrame.contentPane.setVisible(false);
+        	MainFrame.frame.setVisible(false);
         	FinishedFrame.main(null);
         }
 		return fragenListe.get(loadCounter).getFrage();
