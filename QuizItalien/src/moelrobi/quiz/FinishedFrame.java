@@ -28,8 +28,8 @@ public class FinishedFrame extends JFrame {
 	private static final long serialVersionUID = 8976330196169747246L;
 	private JPanel contentPane;
 	private JButton btnRestart;
-	private JButton btnScoreboard;
 	private static JLabel label;
+	private static JLabel label2;
 	public static FinishedFrame frame;
 
 	/**
@@ -62,18 +62,18 @@ public static void Load() {
 	}
 	
 	//Rescale the Image to a more optimal size. 
-	//TODO: Make Scaling look good.
 	
-	Image scaledIcon = downloadingIcon.getScaledInstance(400, 200, java.awt.Image.SCALE_SMOOTH);
+	Image scaledIcon = downloadingIcon.getScaledInstance(450, 350, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon finishedIcon = new ImageIcon(scaledIcon);
 	label.setIcon(finishedIcon);
+	label2.setText("Du hast " + QuizHelper.right + " Fragen richtig beantwortet und " + QuizHelper.wrong + " Falsch beantwortet.");
 }
 	/**
 	 * Create the frame.
 	 */
 	public FinishedFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 200, 400);
+		setBounds(100, 100, 500, 470);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -97,6 +97,9 @@ public static void Load() {
 		
 		label = new JLabel("");
 		panel_1.add(label);
+		
+		label2 = new JLabel("");
+		panel_1.add(label2);
 	}
 
 }

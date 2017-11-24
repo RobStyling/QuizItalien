@@ -34,7 +34,6 @@ public class QuizHelper {
 	
 	public static String getFragen() { //Loading a Question
 		//Falsify if Check. Used currently for Reseting the Game to a previous 0 State.
-		//TODO: Add 'PostGame' Content
         if(loadCounter == fragenListe.size()) {
         	MainFrame.frame.setVisible(false);
         	FinishedFrame.main(null);
