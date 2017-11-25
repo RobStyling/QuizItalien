@@ -38,6 +38,7 @@ public class MainFrame extends JFrame {
 	private JPanel panel_4;
 	private static JLabel lblFrageVon;
 	public static MainFrame frame;
+	private boolean s;
 
 	/**
 	 * Launch the application.
@@ -107,9 +108,13 @@ public class MainFrame extends JFrame {
 		btnNewButton_3 = new JButton("New button");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				boolean s = QuizHelper.CheckAnswer(btnNewButton_3.getText());
-				if(s == true) JOptionPane.showMessageDialog(null, "Diese Antwort ist richtig!", "Richtig!", JOptionPane.OK_OPTION);
-				if(s == false) JOptionPane.showMessageDialog(null, "Diese Antwort ist falsch! Die richtige Antwort ist " + QuizHelper.fragenListe.get(QuizHelper.loadCounter).getAntwort(QuizHelper.fragenListe.get(QuizHelper.loadCounter).getRichtigeAntwrort()),"Falsch!", JOptionPane.OK_OPTION);
+				s = QuizHelper.CheckAnswer(btnNewButton_3.getText());
+				if(s) {
+					JOptionPane.showMessageDialog(null, "Diese Antwort ist richtig!", "Richtig!", JOptionPane.OK_OPTION);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Diese Antwort ist falsch! Die richtige Antwort ist " + QuizHelper.fragenListe.get(QuizHelper.loadCounter).getAntwort(QuizHelper.fragenListe.get(QuizHelper.loadCounter).getRichtigeAntwrort()),"Falsch!", JOptionPane.OK_OPTION);
+				}
 				QuizHelper.iCounter();
 				LoadQuestion();
 			}
@@ -119,9 +124,13 @@ public class MainFrame extends JFrame {
 		btnNewButton_2 = new JButton("New button");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean s = QuizHelper.CheckAnswer(btnNewButton_3.getText());
-				if(s == true) JOptionPane.showMessageDialog(null, "Diese Antwort ist richtig!", "Richtig!", JOptionPane.OK_OPTION);
-				if(s == false) JOptionPane.showMessageDialog(null, "Diese Antwort ist falsch! Die richtige Antwort ist " + QuizHelper.fragenListe.get(QuizHelper.loadCounter).getAntwort(QuizHelper.fragenListe.get(QuizHelper.loadCounter).getRichtigeAntwrort()),"Falsch!", JOptionPane.OK_OPTION);
+				s = QuizHelper.CheckAnswer(btnNewButton_2.getText());
+				if(s) {
+					JOptionPane.showMessageDialog(null, "Diese Antwort ist richtig!", "Richtig!", JOptionPane.OK_OPTION);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Diese Antwort ist falsch! Die richtige Antwort ist " + QuizHelper.fragenListe.get(QuizHelper.loadCounter).getAntwort(QuizHelper.fragenListe.get(QuizHelper.loadCounter).getRichtigeAntwrort()),"Falsch!", JOptionPane.OK_OPTION);
+				}
 				QuizHelper.iCounter();
 				LoadQuestion();
 			}
@@ -131,9 +140,13 @@ public class MainFrame extends JFrame {
 		btnNewButton_1 = new JButton("New button");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean s = QuizHelper.CheckAnswer(btnNewButton_3.getText());
-				if(s == true) JOptionPane.showMessageDialog(null, "Diese Antwort ist richtig!", "Richtig!", JOptionPane.OK_OPTION);
-				if(s == false) JOptionPane.showMessageDialog(null, "Diese Antwort ist falsch! Die richtige Antwort ist " + QuizHelper.fragenListe.get(QuizHelper.loadCounter).getAntwort(QuizHelper.fragenListe.get(QuizHelper.loadCounter).getRichtigeAntwrort()),"Falsch!", JOptionPane.OK_OPTION);
+				s = QuizHelper.CheckAnswer(btnNewButton_1.getText());
+				if(s) {
+					JOptionPane.showMessageDialog(null, "Diese Antwort ist richtig!", "Richtig!", JOptionPane.OK_OPTION);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Diese Antwort ist falsch! Die richtige Antwort ist " + QuizHelper.fragenListe.get(QuizHelper.loadCounter).getAntwort(QuizHelper.fragenListe.get(QuizHelper.loadCounter).getRichtigeAntwrort()),"Falsch!", JOptionPane.OK_OPTION);
+				}
 				QuizHelper.iCounter();
 				LoadQuestion();
 			}
@@ -143,9 +156,13 @@ public class MainFrame extends JFrame {
 		btnNewButton = new JButton("New button");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean s = QuizHelper.CheckAnswer(btnNewButton_3.getText());
-				if(s == true) JOptionPane.showMessageDialog(null, "Diese Antwort ist richtig!", "Richtig!", JOptionPane.OK_OPTION);
-				if(s == false) JOptionPane.showMessageDialog(null, "Diese Antwort ist falsch! Die richtige Antwort ist " + QuizHelper.fragenListe.get(QuizHelper.loadCounter).getAntwort(QuizHelper.fragenListe.get(QuizHelper.loadCounter).getRichtigeAntwrort()),"Falsch!", JOptionPane.OK_OPTION);
+				s = QuizHelper.CheckAnswer(btnNewButton.getText());
+				if(s) {
+					JOptionPane.showMessageDialog(null, "Diese Antwort ist richtig!", "Richtig!", JOptionPane.OK_OPTION);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Diese Antwort ist falsch! Die richtige Antwort ist " + QuizHelper.fragenListe.get(QuizHelper.loadCounter).getAntwort(QuizHelper.fragenListe.get(QuizHelper.loadCounter).getRichtigeAntwrort()),"Falsch!", JOptionPane.OK_OPTION);
+				}
 				QuizHelper.iCounter();
 				LoadQuestion();
 			}

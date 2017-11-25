@@ -89,12 +89,17 @@ public class QuizHelper {
     
     public static boolean CheckAnswer(String inputAnswer) { //Check if Answer is the correct answer.
 		String rightAnswer = fragenListe.get(loadCounter).getAntwort(fragenListe.get(loadCounter).getRichtigeAntwrort());
+		System.out.println(rightAnswer);
+		System.out.println(inputAnswer);
+		System.out.println(rightAnswer.equals(inputAnswer));
 		if(rightAnswer.equals(inputAnswer)) {
 			right++;
+			System.out.println(true);
 			return true;
 		}
 		else {
 			wrong++;
+			System.out.println(false);
 			return false;
 		}
     }
