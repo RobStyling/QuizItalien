@@ -15,7 +15,7 @@ public class FragenHandler {
 		
 		QuizHelper.fragenListe.add(f1);
 	}
-	 public static void prodFragen() {	        
+	 public static void prodFragen() {	     //All Italy Questions (in German)    
 	        Frage it_hauptstadt = new Frage();
 	        it_hauptstadt.setFrage("Was ist die Hauptstadt Italiens?");
 	        it_hauptstadt.addAntwort("Rom");
@@ -132,7 +132,7 @@ public class FragenHandler {
 	        it_wmdabei.addAntwort("Nein");
 	        it_wmdabei.addAntwort("Placeholder");
 	        it_wmdabei.addAntwort("Same");
-	        it_wmdabei.setRichtigeAntwrort(1);
+	        it_wmdabei.setRichtigeAntwrort(2);
 	        it_wmdabei.setImgURL("http://"+ QuizHelper.ip +"/img/it_ball.jpg");
 	        it_wmdabei.setAuthor("Rob");
 	        

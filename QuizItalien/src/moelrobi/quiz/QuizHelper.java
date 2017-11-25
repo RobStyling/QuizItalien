@@ -14,22 +14,20 @@ public class QuizHelper {
 	//Setting instance variables.
 	public static ArrayList<Frage> fragenListe = new ArrayList<Frage>();
 	
-	private static int loadCounter = 0;
+	public static int loadCounter = 0;
 	
-	public static DatenbankHandler dbcon;
+	public static DatenbankHandler dbcon; //Creating a Database Handler globally;
 	
-	public static int right;
+	public static int right; 
 	public static int wrong;
 	
-	public static final String ip = "127.0.0.1";
-	
-	private static MainFrame frame;
+	public static final String ip = "127.0.0.1"; //IP for Downloading the Files and Accessing MySQL.
 	
 	public static void main(String[] args) {
 		FragenHandler.prodFragen(); //Load up the FragenHandler (for Loading the Questions).
 		System.out.println(fragenListe.toString());
 		MainFrame.main(null); //Load the Frame.
-		dbcon = new DatenbankHandler("jdbc:mysql://" + ip +":3306/flbk_rob?autoReconnect=true", "root", ""); //Creating a new Database Object.#
+		dbcon = new DatenbankHandler("jdbc:mysql://" + ip +":3306/flbk_rob?autoReconnect=true", "root", ""); //Creating a new Database Object.
 	}
 	
 	public static String getFragen() { //Loading a Question
@@ -115,7 +113,7 @@ public class QuizHelper {
     	return (int) Math.floor(Math.random() * (Max - Min + 1)) + Min;
     }
 
-	public static String getAuthor() {
+	public static String getAuthor() { //Load the Author.
 		return fragenListe.get(loadCounter).getAuthor();
 	} 
 }

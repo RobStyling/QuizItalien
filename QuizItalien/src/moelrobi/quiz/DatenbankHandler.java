@@ -32,7 +32,7 @@ public class DatenbankHandler {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public ArrayList getScore() {
+	public ArrayList getScore() { //Getting the Score. 
 		ResultSet res = null;
 		ArrayList<String> scoreboard = new ArrayList<>();
 		scoreboard.add("Name / Points");
