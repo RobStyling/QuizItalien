@@ -136,6 +136,26 @@ public class FragenHandler {
 	        it_wmdabei.setImgURL("http://"+ QuizHelper.ip +"/img/it_ball.jpg");
 	        it_wmdabei.setAuthor("Rob");
 	        
+	        Frage it_zahl = new Frage();
+	        it_zahl.setFrage("Was ist die Unglückzahl in Italien?");
+	        it_zahl.addAntwort("17");
+	        it_zahl.addAntwort("22");
+	        it_zahl.addAntwort("42");
+	        it_zahl.addAntwort("Null");
+	        it_zahl.setRichtigeAntwrort(1);
+	        it_zahl.setImgURL("http://" + QuizHelper.ip + "/img/it_zahl.png");
+	        it_zahl.setAuthor("Felix");
+	        
+	        Frage it_deutsch = new Frage();
+	        it_deutsch.setFrage("In welcher italienischen Region wird mehrheitlich Deutsch gesprochen?");
+	        it_deutsch.addAntwort("Sardinien");
+	        it_deutsch.addAntwort("Südtirol");
+	        it_deutsch.addAntwort("Kampanien");
+	        it_deutsch.addAntwort("Kalabrien");
+	        it_deutsch.setRichtigeAntwrort(2);
+	        it_deutsch.setImgURL("http://" + QuizHelper.ip + "/img/it_deutsch.jpg");
+	        it_deutsch.setAuthor("Abdul und Emre");
+	        
 	        QuizHelper.fragenListe.add(it_hauptstadt);
 	        QuizHelper.fragenListe.add(it_vulkan);
 	        QuizHelper.fragenListe.add(it_grosstadt);
@@ -148,5 +168,7 @@ public class FragenHandler {
 	        QuizHelper.fragenListe.add(it_ausbruch);
 	        QuizHelper.fragenListe.add(it_mafia);
 	        QuizHelper.fragenListe.add(it_wmdabei);
+	        QuizHelper.fragenListe.add(it_zahl);
+	        QuizHelper.fragenListe.add(it_deutsch);
 	}
 }
